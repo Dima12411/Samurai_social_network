@@ -1,0 +1,25 @@
+.dialog img {
+    width: 50px;
+}
+
+.dialog .name {
+    display: inline-block;
+    color: black;
+    font-weight: bold;
+    padding: 0px 10px;
+    margin-left: 2.5px;
+    margin-bottom: 10px;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: white;
+    width: 60px;
+    text-align: center;
+}
+
+.dialog .name:link {
+    text-decoration: none;
+}
+
+.dialog .name:hover {
+    color: darkslateblue;
+}
