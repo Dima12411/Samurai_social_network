@@ -3,11 +3,11 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from "./MyPosts/Post/MyPostsContainer";
 import {ProfileType} from "../../redux/profileReducer";
 
-export type ProfilePropstype = {
+export type ProfilePropsType = {
     profile: ProfileType
 }
 
-const Profile = (props: ProfilePropstype) => {
+const Profile = (props: ProfilePropsType) => {
 
     return (
         <div>
