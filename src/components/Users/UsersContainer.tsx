@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {rootReducerType} from '../../redux/reduxStore';
 import {
+    followingInUserProgress,
     followUser,
     setCurrentPage,
     setTotalUsersCount,
@@ -44,9 +45,11 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                 pageSize={this.props.pageSize}
                 currentPage={this.props.currentPage}
                 users={this.props.users}
+                followingInProgress={this.props.followingInProgress}
                 onPageChanged={this.onPageChanged}
                 unfollowUser={this.props.unfollowUser}
                 followUser={this.props.followUser}
+                followingInUserProgress={this.props.followingInUserProgress}
             />
         </>
 
@@ -59,6 +62,7 @@ type MapStateToPropsType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
+    followingInProgress: Array<number>
 }
 type MapDispatchToPropsType = {
     followUser: (userId: number) => void
@@ -67,6 +71,7 @@ type MapDispatchToPropsType = {
     setCurrentPage: (pageNumber: number) => void
     setTotalUsersCount: (totalUsersCounter: number) => void
     toggleIsFetching: (isFetching: boolean) => void
+    followingInUserProgress: (userId: number, isFetching: boolean) => void
 }
 
 export type UsersContainerPropsType = MapStateToPropsType & MapDispatchToPropsType
@@ -78,9 +83,10 @@ const mapStateToProps = (state: rootReducerType): MapStateToPropsType => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress,
     }
 }
 
 
 export default connect(mapStateToProps,
-    {followUser, unfollowUser, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching})(UsersContainer);
+    {followUser, unfollowUser, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, followingInUserProgress})(UsersContainer);
