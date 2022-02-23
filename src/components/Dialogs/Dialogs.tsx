@@ -3,6 +3,7 @@ import s from './Dialogs.module.css'
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import {DialogsPropsType} from "./DialogsContainer";
+import {Navigate} from "react-router-dom";
 
 const Dialogs = (props: DialogsPropsType) => {
     const [message, setMessage] = useState<string>("")
@@ -17,6 +18,8 @@ const Dialogs = (props: DialogsPropsType) => {
     let onAddMessage = () => {
         props.addMessage()
     }
+
+    if (!props.isAuth) return <Navigate to='/login'/>
 
     return (
         <div className={s.dialogs}>

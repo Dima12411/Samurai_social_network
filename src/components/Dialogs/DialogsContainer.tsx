@@ -11,9 +11,10 @@ import {rootReducerType} from "../../redux/reduxStore";
 import {Dispatch} from "redux";
 
 type MapStateToPropsType = {
-    dialogs: Array<DialogType>,
-    messages: Array<MessageType>,
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
     newMessageText: string
+    isAuth: boolean
 }
 type MapDispatchToPropsType = {
     updateNewMessageBody: (message: string) => void
@@ -25,7 +26,8 @@ const mapStateToProps = (state: rootReducerType): MapStateToPropsType => {
     return {
         dialogs: state.dialogsPage.dialogs,
         messages: state.dialogsPage.messages,
-        newMessageText: state.dialogsPage.newMessageText
+        newMessageText: state.dialogsPage.newMessageText,
+        isAuth: state.auth.isAuth
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
