@@ -19,7 +19,7 @@ const Dialogs = (props: DialogsPropsType) => {
         props.addMessage()
     }
 
-    if (!props.isAuth) return <Navigate to='/login'/>
+    if (props.isAuth) return <Navigate to='/login'/>
 
     return (
         <div className={s.dialogs}>
