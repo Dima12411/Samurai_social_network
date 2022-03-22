@@ -15,9 +15,9 @@ const ProfileInfo = (props: ProfileInfoPropsType) => {
 
     return (
         <div>
-            <div>
-                <img src="https://healingatthecross.com/wp-content/uploads/2017/08/pexels-photo-248797.jpeg"/>
-            </div>
+            {/*<div>*/}
+            {/*    <img src="https://healingatthecross.com/wp-content/uploads/2017/08/pexels-photo-248797.jpeg"/>*/}
+            {/*</div>*/}
             <div className={s.descriptionBlock}>
                 {/*{props.profile.photos.large*/}
                 {/*    &&*/}
