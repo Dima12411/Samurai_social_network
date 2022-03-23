@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {usersAPI} from "../API/api";
+import {profileAPI, usersAPI} from "../API/api";
 
 export type PostType = {
     id: number
@@ -130,6 +130,24 @@ export const getUserProfile = (userId: string) => {
     }
 }
 
+export const getUserStatus = (userId: string) => {
+    return (dispatch: Dispatch) => {
+        profileAPI.getUserStatus(userId)
+            .then(response => {
+                dispatch(setUserStatus(response))
+            })
 
+    }
+}
+
+export const updateUserStatus = (status: string) => {
+    return (dispatch: Dispatch) => {
+        profileAPI.updateStatus(status)
+            .then(response => {
+                if (response.resultCode === 0)
+                    dispatch(setUserStatus(status))
+            })
+    }
+}
 
 export default profileReducer;
