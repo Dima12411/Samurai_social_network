@@ -35,6 +35,7 @@ export type InitialStatePropsType = {
     posts: Array<PostType>
     newPostText: string
     profile: ProfileType
+    status: string
 }
 
 let initialState: InitialStatePropsType = {
@@ -46,6 +47,7 @@ let initialState: InitialStatePropsType = {
     ],
     newPostText: "",
     profile: null,
+    status: "",
 }
 
 
@@ -61,7 +63,7 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionsP
         case "UPDATE-NEW-POST-TEXT": {
             return {
                 ...state,
-                newPostText: action.newText
+                newPostText: action.payload
             }
         }
         case "SET-USER-PROFILE": {
@@ -70,17 +72,27 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionsP
                 profile: action.payload
             }
         }
+        case "SET-USER-STATUS": {
+            return {
+                ...state,
+                status: action.payload
+            }
+        }
         default:
             return state
     }
 }
 
 
-export type ActionsProfileType = AddPostType | UpdateNewPostTextType | SetUserProfileType
+export type ActionsProfileType =
+    | AddPostType
+    | UpdateNewPostTextType
+    | SetUserProfileType
+    | SetUserStatusType
 type AddPostType = ReturnType<typeof addPostAC>
 type UpdateNewPostTextType = ReturnType<typeof updateNewPostTextAC>
 type SetUserProfileType = ReturnType<typeof setUserProfile>
-
+type SetUserStatusType = ReturnType<typeof setUserStatus>
 
 export const addPostAC = () => {
     return {
@@ -91,7 +103,7 @@ export const addPostAC = () => {
 export const updateNewPostTextAC = (text: string) => {
     return {
         type: "UPDATE-NEW-POST-TEXT",
-        newText: text
+        payload: text
     } as const
 }
 
@@ -99,6 +111,13 @@ export const setUserProfile = (profile: any) => {
     return {
         type: 'SET-USER-PROFILE',
         payload: profile
+    } as const
+}
+
+export const setUserStatus = (status: string) => {
+    return {
+        type: 'SET-USER-STATUS',
+        payload: status
     } as const
 }
 
@@ -110,5 +129,7 @@ export const getUserProfile = (userId: string) => {
             })
     }
 }
+
+
 
 export default profileReducer;
