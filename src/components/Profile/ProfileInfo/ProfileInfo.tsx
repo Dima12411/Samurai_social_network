@@ -1,12 +1,14 @@
 import React from "react";
 import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
-import {ProfileType} from "../../../redux/profileReducer";
+import {ProfileType, updateUserStatus} from "../../../redux/profileReducer";
 import avatarDefault from '../../../assets/images/user.png'
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 export type ProfileInfoPropsType = {
     profile: ProfileType
+    status: string
+    updateUserStatus: (status: string) => void
 }
 
 const ProfileInfo = (props: ProfileInfoPropsType) => {
@@ -25,7 +27,10 @@ const ProfileInfo = (props: ProfileInfoPropsType) => {
                 {/*    <img src={props.profile.photos.large}/>*/}
                 {/*}*/}
                 <img src={props.profile && props.profile.photos.large !== null ? props.profile.photos.large : avatarDefault} alt=""/>
-                <ProfileStatus status={"Hello my friends"}/>
+                <ProfileStatus
+                    status={props.status}
+                    updateUserStatus={props.updateUserStatus}
+                />
                 <p>{props.profile.lookingForAJob ? `I'm looking for a job` : `I'm not looking for a job`}</p>
                 <p>{props.profile.lookingForAJobDescription}</p>
                 <p>{`Contact details for contacting me - ` + props.profile.contacts.vk}</p>

@@ -9,7 +9,7 @@ type mapStateToPropsForRedirectType = {
 
 const mapStateToPropsForRedirect = (state: rootReducerType): mapStateToPropsForRedirectType => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: true
     }
 }
 
